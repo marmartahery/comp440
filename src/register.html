@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./../input.css">
+</head>
+<body>
+    <br></br>
+  <h1>Welcome to ANM!</h1>
+  <h2>Please enter your information below to register:</h2>
+  <form class="myForm" method="get" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
+    <p>
+    <label>First Name
+    <input type="text" name="first_name" required>
+    </label> 
+    </p>
+    
+    <p>
+    <label>Last Name 
+    <input type="text" name="last_name">
+    </label>
+    </p>
+    
+    <p>
+    <label>Email 
+    <input type="email" name="email_address">
+    </label>
+    </p>
+
+    <p>
+      <label>Username
+      <input type="text" name="username">
+      </label>
+      </p>
+    
+      <p>
+        <label>Password 
+        <input type="password" name="password">
+        </label>
+        </p>
+
+        <p>
+            <label>Confirm Password 
+            <input type="password" name="password">
+            </label>
+            </p>
+            <button type="button">Register</button>
+</form>
+<h2>Already have an account? <a href="./index.html">Log In</a> here</h2>
+</body>
+</html>
