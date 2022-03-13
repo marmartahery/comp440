@@ -1,57 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .myForm {
 font-family: Arial;
 font-size: 1em;
-width: 20em;
+width: 500px;
 padding: 1em;
+border-radius: .5em;
 border: 0px solid #ccc;
+text-align: left;
+display: block;  
 margin: 0 auto;
-width: 750px;
 }
 
-.myForm * {
+/* .myForm * {
 box-sizing: border-box;
-}
+} */
 
-.myForm fieldset {
+/* .myForm fieldset {
 border: none;
 padding: 0;
-}
+text-align: center;
+} */
 
-.myForm legend,
+/* .myForm legend,
 .myForm label {
 padding: 0;
 font-weight: bold;
-}
+} */
 
-.myForm label.choice {
+/* .myForm label.choice {
 font-size: 0.9em;
 font-weight: normal;
-}
+} */
 
-.myForm input[type="text"],
+/* .myForm input[type="text"],
 .myForm input[type="tel"],
 .myForm input[type="email"],
 .myForm input[type="password"],
 .myForm input[type="datetime-local"],
-.myForm select,
-.myForm textarea {
+.myForm select, */
+/* .myForm textarea {
 display: block;
 width: 100%;
 border: .5px solid #ccc;
 font-family: Arial;
 font-size: .9em;
 padding: 0.3em;
-}
+} */
 
-.myForm textarea {
+/* .myForm textarea {
 height: 100px;
-}
+} */
 
-.myForm button {
+/* .myForm button {
 padding: .7em;
 border-radius: 3em;
 background-color: transparent;
@@ -59,14 +58,14 @@ border: solid;
 border-color: grey;
 font-weight: bold;
 margin-top: 1em;
-}
+} */
 
-.myForm button:hover {
+/* .myForm button:hover {
 border: solid;
 cursor: pointer;
 background-color: transparent;
 border-color: black;
-}
+} */
 
 body {
     background-image: url("./assets/background.jpg");
@@ -82,20 +81,7 @@ h2 {
     font-size: 15pt;
     text-align: center;
     font-style: italic;
-}
-
-h4 {
-    font-style: italic;
-    font-size: 40pt;
-    text-align: center;
-    font-family: Times New Roman;
-}
-
-h5 {
-    font-size: 15pt;
-    text-align: center;
-    font-family: Times New Roman;
-    font-style: italic;
+    font-family: Arial;
 }
 
 a:link{
@@ -111,19 +97,17 @@ a:hover{
 button2{
     padding: .7em;
     border-radius: 3em;
+    font-family: Arial;
     background-color: transparent;
-    border: solid;
-    border-color: grey;
     font-weight: bold;
     margin-top: 1em;
     Text-align: center;
     display: block;
-    width: 200px;   
-    margin: 0 auto; 
+    width: 75px;   
+    margin: 0 auto;
+    text-decoration: underline; 
 }
 
 button2:hover{
-    background-color: white;
-    border: solid;
-    border-color: black;
+    background-color: #ffc2a6; 
 }
