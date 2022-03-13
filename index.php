@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $row_3 = mysqli_fetch_array($result_active, MYSQLI_ASSOC);
     // $active = $row_3['active'];
 
-    if (password_verify($password, $password_in_database)) {
+    if ($password == $password_in_database) {
       // don't need, not tracking # successful logins or timestamp of last login
       // mysqli_query($conn, "UPDATE user_stats SET success_logins = success_logins + 1 WHERE username = '" . $username . "'");
       // mysqli_query($conn, "UPDATE user_accounts SET last_login = CURRENT_TIMESTAMP WHERE username = '" . $username . "'");
