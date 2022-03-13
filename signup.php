@@ -1,12 +1,23 @@
-<!DOCTYPE html>
+<?php 
+  // if ($_POST['password']!= $_POST['password2'])
+  // {
+  //   $passwords_match = false;
+  //   echo("Oops! Password did not match! Try again. ");
+  // }
+  // else {
+  //   $passwords_match = true;
+  // }
+?>
+
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title>Create Account</title>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src='front_validation.js'> </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+  <link href="input.css" rel="stylesheet" type="text/css">
+  <!-- <script type="text/javascript" src='front_validation.js'> </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script> -->
+  <!-- this was for the password strength meter -->
 </head>
 
 <body>
@@ -21,7 +32,7 @@
         <div class="row">
           <div class="column">
             <input type="text" id="firstName" name="first_name" placeholder="First Name" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" minlength="3" maxlength="30" required><br>
-            <input type="text" id="birthDay" name="birth_date" placeholder="Birth Date (YYYY-MM-DD)" pattern="^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$" maxlength="10" required><br>
+            <!-- <input type="text" id="birthDay" name="birth_date" placeholder="Birth Date (YYYY-MM-DD)" pattern="^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$" maxlength="10" required><br> -->
             <div <?php if (isset($name_error)) : ?> class="form_error" <?php endif ?>>
               <input type="text" id="username" name="username" minlength="5" maxlength="20" placeholder="Username" pattern="^[a-zA-Z0-9_.-]*" required value="<?php echo $username; ?>">
               <?php if (isset($name_error)) : ?>
@@ -29,9 +40,11 @@
               <?php endif ?>
             </div>
             <input type="password" id="password1" name="password" minlength="6" maxlength="20" placeholder="Password" pattern="^[A-Za-z0-9_@./#&+!%$^*()<>-]*$" required><br>
-            <meter max="4" id="password-strength-meter"></meter>
-            <div id="password-strength-text"></div>
-            <script>
+            
+            <!-- don't need because we are not using password meter -->
+            <!-- <meter max="4" id="password-strength-meter"></meter>
+            <div id="password-strength-text"></div> -->
+            <!-- <script>
               var strength = {
                 0: "Very Bad ☹",
                 1: "Bad ☹",
@@ -59,9 +72,11 @@
                   text.innerHTML = " ";
                 }
               });
-            </script>
-            <h2>What city were you born in?</h2>
-            <h2>What school did you attend for sixth grade?</h2>
+            </script> -->
+
+            <!-- don't need because we are not doing security questions -->
+            <!-- <h2>What city were you born in?</h2>
+            <h2>What school did you attend for sixth grade?</h2> -->
           </div>
           <div class="column">
             <input type="text" id="lastName" name="last_name" placeholder="Last Name" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" minlength="3" maxlength="30" required><br>
@@ -71,10 +86,14 @@
                 <span><?php echo $email_error; ?></span>
               <?php endif ?>
             </div>
+            <!-- you may delete this spacer if its ugly -->
             <input type="form_spacer" disabled>
-            <input type="password" id="password2" minlength="6" maxlength="20" placeholder="Re-enter Password" required><br>
+            <input type="password" name="password2" id="password2" minlength="6" maxlength="20" placeholder="Re-enter Password" required><br>
+            <!-- this paragraph was for the error message to display if the passwords didnt match -->
             <p id="password-repeat"></p>
-            <script>
+
+            <!-- add php for checking if passwords match -->
+            <!-- <script>
               var password = document.getElementById('password1');
               var passwordRepeat = document.getElementById('password2');
               var matchText = document.getElementById('password-repeat');
@@ -90,15 +109,16 @@
                   matchText.innerHTML = "<i> Passwords match. </i>";
                 }
               });
-            </script>
-            <input type="text" id="answer_one" name="answer_one" placeholder="City" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" minlength="3" maxlength="25" required>
-            <input type="text" id="answer_two" name="answer_two" placeholder="School Name" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" minlength="3" maxlength="25" required>
+            </script> -->
+            <!-- more security question jazz -->
+            <!-- <input type="text" id="answer_one" name="answer_one" placeholder="City" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" minlength="3" maxlength="25" required>
+            <input type="text" id="answer_two" name="answer_two" placeholder="School Name" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" minlength="3" maxlength="25" required> -->
           </div>
         </div>
 
         <!-- beginning of recaptcha -->
-
-        <head>
+        <!-- dont need recaptcha -->
+        <!-- <head>
           <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         </head>
 
@@ -107,9 +127,10 @@
             <div class="g-recaptcha" data-sitekey="6LchkD8dAAAAAARDJbFidx8QurJw20oaRXdA5JjJ" data-callback="callback"></div>
             <br />
           </form>
-        </body>
+        </body> -->
         <!-- end of recaptcha -->
-        <script type="text/javascript">
+        <!-- javascript that disables button until all fields are filled -->
+        <!-- <script type="text/javascript">
           // function callback() {
             var first = document.getElementById('firstName').value
             var last = document.getElementById('lastName').value
@@ -125,7 +146,7 @@
 
             btnSubmit.disabled = EnableDisable(first, last, bday, email, user, pass1, pass2, ans1, ans2);
           // }
-        </script>
+        </script> -->
 
         <button class="button1" type="submit" id="btnSubmit">Sign Up</button>
       </form>
