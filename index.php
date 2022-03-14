@@ -58,13 +58,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
   <h1>Welcome to ANM!</h1>
   <h2>Please Login Below</h2><br>
+  <!-- <form action="session.php" method="post"> -->
   <div class="container">
     <form action="" method="post">
       <!-- <h2><label for="uname" class="myForm" >Username</label></h2> -->
-      <input type="text" class="myForm" name="username" placeholder="Enter Username"><br>
+      <input type="text" class="myForm" name="username" placeholder="Enter Username" required><br>
       <!-- <h2><label for="pwd">Password</label><br></h2> -->
-      <input type="password" class="myForm" name="password" placeholder="Enter Password"><br><br>
-      <button2 id="button1" class="button2" type="submit">Login</button2><br>
+      <input type="password" class="myForm" name="password" placeholder="Enter Password" required><br><br>
+      <button id="button1" type="submit">Login</button><br>
     </form>
   </div>
   <div class="forgotpsw">

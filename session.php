@@ -1,6 +1,15 @@
-<?php
-   include('config.php');
-   session_start();
+<?php header('Location: http://localhost:3000/homepage.php'); ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Insert Page</title>
+</head>
+
+<body>
+   <center>
+      <?php
+      include('config.php');
    
    $user_check = $_SESSION["login_user"];
    

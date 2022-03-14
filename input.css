@@ -111,3 +111,40 @@ button2{
 button2:hover{
     background-color: #ffc2a6; 
 }
+
+button{
+    padding: .7em;
+    border-radius: 3em;
+    font-family: Arial;
+    background-color: transparent;
+    font-weight: bold;
+    margin-top: 1em;
+    text-align: center;
+    display: block;
+    width: 150px;   
+    margin: 0 auto;
+    text-decoration: underline; 
+}
+
+button:hover{
+    background-color: #ffc2a6; 
+}
+
+input {
+    border-radius: .5em;
+    border: 0px solid #ccc;
+    text-align: left;
+    display: block;  
+    margin: 0 auto;
+    padding: 1em;
+    width: 500px;
+}
+
+i {
+    font-size: 15pt;
+    text-align: center;
+    font-family: Arial;
+    display: block;
+    margin: 0 auto;
+
+}
