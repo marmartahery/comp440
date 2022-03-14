@@ -6,15 +6,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $username = mysqli_real_escape_string($conn, $_POST['username']);
   $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-  // don't need this because we know username will be unique
-  // $sql_qry = "SELECT user_id FROM user_accounts WHERE username = '$username'";
-  // $result_id = mysqli_query($conn, $sql_qry);
-  // $row_1 = mysqli_fetch_array($result_id, MYSQLI_ASSOC);
-  // $uid = $row_1['user_id'];
+  // check to see if username exists in database
+  $sql_qry = "SELECT username FROM user WHERE username = '$username'";
+  $result_id = mysqli_query($conn, $sql_qry);
 
-  // $count = mysqli_num_rows($result_id);
+  $count = mysqli_num_rows($result_id);
 
-  // if ($count == 1) {
+  if ($count == 1) {
     $_SESSION["login_user"] = $username;
 
     $sql_qry_pwd = "SELECT password FROM user WHERE username = '$username'";
@@ -22,26 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $row_1 = mysqli_fetch_array($result_pwd, MYSQLI_ASSOC);
     $password_in_database = $row_1['password'];
 
-    // don't need this check if user account is active(old project)
-    // $qry_active = "SELECT active FROM user_accounts WHERE username = '$username'";
-    // $result_active = mysqli_query($conn, $qry_active);
-    // $row_3 = mysqli_fetch_array($result_active, MYSQLI_ASSOC);
-    // $active = $row_3['active'];
-
     if ($password == $password_in_database) {
-      // don't need, not tracking # successful logins or timestamp of last login
-      // mysqli_query($conn, "UPDATE user_stats SET success_logins = success_logins + 1 WHERE username = '" . $username . "'");
-      // mysqli_query($conn, "UPDATE user_accounts SET last_login = CURRENT_TIMESTAMP WHERE username = '" . $username . "'");
-      header("location: home.php");
+      header("location: homepage.php");
     } else {
-      // don't need, not tracking # failed logins
-      // mysqli_query($conn, "UPDATE user_stats SET fail_logins = fail_logins + 1 WHERE username = '" . $username . "'");
-      $error = "Your Username or Password is invalid";
+      $_SESSION["login_error"] = 'Invalid username or password.';
     }
-  // } 
-  // else {
-  //   $error = "Your Username or Password is invalid";
-  // }
+  } 
+  else {
+    $_SESSION["login_error"] = 'Invalid username or password.';
+  }
 }
 
 ?>
@@ -65,6 +52,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="text" class="myForm" name="username" placeholder="Enter Username" required><br>
       <!-- <h2><label for="pwd">Password</label><br></h2> -->
       <input type="password" class="myForm" name="password" placeholder="Enter Password" required><br><br>
+      <p id="login_error_p">
+        <?php
+          if(isset($_SESSION["login_error"])) {
+            $error = $_SESSION["login_error"];
+            session_unset();
+          } else {
+            $error = "";
+          }
+
+          echo $error;
+        ?>
+      </p>
       <button id="button1" type="submit">Login</button><br>
     </form>
   </div>

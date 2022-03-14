@@ -1,5 +1,34 @@
 <?php 
+// include("config.php");
+// session_start();
 
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   $username = mysqli_real_escape_string($conn, $_POST['username']);
+//   $email = mysqli_real_escape_string($conn, $_POST['email']);
+
+//   // check to see if username exists in database
+//   $sql_qry_user = "SELECT username FROM user WHERE username = '$username'";
+//   $result_id_user = mysqli_query($conn, $sql_qry);
+
+//   $sql_qry_email = "SELECT email FROM user WHERE email = '$email'";
+//   $result_id_email = mysqli_query($conn, $sql_qry);
+
+//   $username_count = mysqli_num_rows($result_id_user);
+//   $email_count = mysqli_num_rows($result_id_email);
+
+
+//   if ($username_count == 1) {
+//     $_SESSION["username_taken_error"] = 'Username taken';
+//     $_SESSION["user_and_email_free"] = false;
+//   } 
+//   if ($email_count == 1) {
+//     $_SESSION["email_taken_error"] = 'Email already in use';
+//     $_SESSION["user_and_email_free"] = false;
+//   } 
+//   if ($username_count == 0 && $email_count == 0) {
+//     $_SESSION["user_and_email_free"] = true;
+//   }
+// }
 ?>
 
 <html lang="en">
@@ -25,7 +54,31 @@
             <input type="text" id="firstName" name="first_name" placeholder="First Name" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" required><br>
             <input type="text" id="lastName" name="last_name" placeholder="Last Name" pattern="^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*" required><br>
             <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <!-- <p id="email_error_p">
+              <?php
+                // if(isset($_SESSION["email_taken_error"])) {
+                //   echo $_SESSION["email_taken_error"];
+                // } else {
+                //   unset($_SESSION['email_taken_error']);
+                //   // $error_email = "";
+                // }
+
+                // //  echo $error_email;
+              ?>
+            </p> -->
             <input type="text" id="username" name="username" placeholder="Username" pattern="^[a-zA-Z0-9_.-]*" required ?><br>
+            <!-- <p id="username_error_p">
+              <?php
+                // if(isset($_SESSION["username_taken_error"])) {
+                //   echo $_SESSION["username_taken_error"];
+                // } else {
+                //   unset($_SESSION['username_taken_error']);
+                //   // $error_user = "";
+                // }
+
+                // // echo $error_user;
+              ?>
+            </p> -->
             <input type="password" id="password1" name="password" placeholder="Password" pattern="^[A-Za-z0-9_@./#&+!%$^*()<>-]*$" required><br>
             <input type="password" name="password2" id="password2" placeholder="Re-enter Password" required><br>
             <p id="password-repeat"></p>
@@ -50,25 +103,23 @@
             </script>
 
         <!-- javascript that disables button until all fields are filled -->
-       <script type="text/javascript">
-           function callback() {
-            var first = document.getElementById('firstName').value
-            var last = document.getElementById('lastName').value
-            var email = document.getElementById('email').value
-            var user = document.getElementById('username').value
-            var pass1 = document.getElementById('password1').value
-            var pass2 = document.getElementById('password2').value
-            var btnSubmit = document.getElementById("btnSubmit")
-            btnSubmit.disabled = true;
-
-            btnSubmit.disabled = EnableDisable(first, last, email, user, pass1, pass2);
-           }
-        </script>
 
         <button type="submit" id="btnSubmit">Sign Up</button>
       </form>
     </div>
+    <!-- <p id="register_success_p">
+      <?php
+        // if(isset($_SESSION["register_success"])) {
+        //   echo $_SESSION["register_success"];
+        //   session_unset();
+        //   session_destroy();
+        // } else {
+        //   // $message = "";
+        // }
 
+        // // echo $message;
+      ?>
+    </p> -->
     <h2>Already have an account? Log in <a href="index.php">here</a></h2>
 </body>
 
