@@ -10,63 +10,6 @@ display: block;
 margin: 0 auto;
 }
 
-/* .myForm * {
-box-sizing: border-box;
-} */
-
-/* .myForm fieldset {
-border: none;
-padding: 0;
-text-align: center;
-} */
-
-/* .myForm legend,
-.myForm label {
-padding: 0;
-font-weight: bold;
-} */
-
-/* .myForm label.choice {
-font-size: 0.9em;
-font-weight: normal;
-} */
-
-/* .myForm input[type="text"],
-.myForm input[type="tel"],
-.myForm input[type="email"],
-.myForm input[type="password"],
-.myForm input[type="datetime-local"],
-.myForm select, */
-/* .myForm textarea {
-display: block;
-width: 100%;
-border: .5px solid #ccc;
-font-family: Arial;
-font-size: .9em;
-padding: 0.3em;
-} */
-
-/* .myForm textarea {
-height: 100px;
-} */
-
-/* .myForm button {
-padding: .7em;
-border-radius: 3em;
-background-color: transparent;
-border: solid;
-border-color: grey;
-font-weight: bold;
-margin-top: 1em;
-} */
-
-/* .myForm button:hover {
-border: solid;
-cursor: pointer;
-background-color: transparent;
-border-color: black;
-} */
-
 body {
     background-image: url("./assets/background.jpg");
 }
