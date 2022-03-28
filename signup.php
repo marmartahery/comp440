@@ -1,4 +1,6 @@
 <?php
+include("config.php");
+session_start();
 ?>
 
 <html lang="en">
@@ -53,13 +55,7 @@
     <div>
 <?php 
 if(isset($_POST['create'])){
-                 
-  $host = "localhost";  
-  $user = "root";  
-  $password = "Comp424!";  
-  $db_name = "comp440";  
 
-  $con = mysqli_connect($host, $user, $password, $db_name);  
   if(mysqli_connect_errno()) {  
       die("Failed to connect with MySQL: ". mysqli_connect_error());  
   }  
@@ -73,18 +69,20 @@ if(isset($_POST['create'])){
   //to prevent from mysqli injection  
   $username = stripcslashes($username);  
   $password = stripcslashes($password);  
-  $username = mysqli_real_escape_string($con, $username);  
-  $password = mysqli_real_escape_string($con, $password);  
+  $username = mysqli_real_escape_string($conn, $username);  
+  $password = mysqli_real_escape_string($conn, $password);  
 
   $sql = "SELECT * FROM user WHERE username = '$username' AND email = '$email'";  
-  $result = mysqli_query($con, $sql);  
+  $result = mysqli_query($conn, $sql);  
   $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
   $count = mysqli_num_rows($result);
   
   if($count==0){
       $sql = "INSERT INTO user (username, password, first_name, last_name, email)
               VALUES ('$username', '$password', '$fName','$lName','$email')";
-      if ($con->query($sql) === TRUE) {
+      if ($conn->query($sql) === TRUE) {
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $_SESSION["login_user"] = $username;
           echo ("<script LANGUAGE='JavaScript'>
            window.alert('User Created!');
           window.location.href='http://localhost:3000/homepage.php';
