@@ -11,6 +11,15 @@
 
   echo "<h1><i> Welcome,&nbsp" . $first .".</i></h1>";
 ?>
+<!-- foreign key checks: delete tables in order and you dont need to set this -->
+<?php
+  function initializeDb(){
+    include("config.php");
+
+    $conn_comp440->multi_query(file_get_contents('initialize.sql'));
+  }
+?>
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -24,7 +33,14 @@
   </h1>
 
   <!-- need the functionality to initialize database -->
-  <button type="submit">Initialize Database</button><br>
+  <button type="submit" name='initialize_db' onclick="onClickInit()">Initialize Database</button><br>
+  <script>
+    function onClickInit(){
+      var init_db = "<?php initializeDb(); ?>";
+      alert(init_db);
+    }
+  </script>
+
 
   <h2><a href="logout.php">Sign Out</a></h2>
 
