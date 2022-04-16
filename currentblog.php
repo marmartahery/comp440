@@ -11,25 +11,23 @@
 
   echo "<h1><i> Welcome,&nbsp" . $first .".</i></h1>";
 ?>
-<html>
+
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>Create Account</title>
+  <title>Current Blog Post</title>
   <link href="input.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-  <h1>
-    You're signed in!
-  </h1>
+<h1>Current Blog Posts</h1>
+<h2>You can only give at most 3 comments per day, at most one comment for each blog,</h2>
+<h2>and cannot comment on your own blog post</h2><br>
+<br><button type="submit"><a href="newblog.php">New Blog Post</a></button><br>
 
-  <!-- need the functionality to initialize database -->
-  <button type="submit"><a href="initializedatabase.php">Initialize Database</a></button><br>
 <br>
-  <button type="submit"><a href="newblog.php">New Blog Post</a></button>
-<br>
-  <h2><a href="logout.php">Sign Out</a></h2>
-
+    <h2><a href="logout.php">Sign Out</a></h2>
 
 </body>
 </html>
