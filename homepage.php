@@ -32,8 +32,8 @@
     You're signed in!
   </h1>
 
-  <!-- need the functionality to initialize database -->
-  <button type="submit" name='initialize_db' onclick="onClickInit()">Initialize Database</button><br>
+  <button type="submit" name='initialize_db' onclick="onClickInit()">Initialize Database</button>
+  <br>
   <script>
     function onClickInit(){
       var init_db = "<?php initializeDb(); ?>";
@@ -41,6 +41,8 @@
     }
   </script>
 
+  <button type="submit"><a href="newblog.php">New Blog Post</a></button>
+  <br>
 
   <h2><a href="logout.php">Sign Out</a></h2>
 
