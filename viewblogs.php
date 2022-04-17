@@ -25,7 +25,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     <br><button type="submit"><a href="newblog.php">New Blog Post</a></button><br>
     <div>
         <?php
-        include("config.php");
+        // include("config.php");
 
         // get the total number of blogs
         $sql_count_blogs = "SELECT COUNT(*) FROM blogs";
@@ -83,7 +83,12 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 
                 // $comment_blog_id = "comment-" .$blog_id . "";
                 echo "<form action='viewblogs.php' method='POST'>";
-                echo "<input type='text' id='content' name='content' placeholder='Leave a comment...'><br>";
+                echo "<input type='text' style='resize: none; height:100px' id='content' name='content' minlength=1 maxlength=250 placeholder='Leave a comment...'><br>";
+                echo "<p>Did you like this post?</p>";
+                echo "<input type='radio' id='yes' name='sentiment' value=1 checked>";                
+                echo "<label for='yes'>Yes</label><br>";
+                echo "<input type='radio' id='no' name='sentiment' value=0>";
+                echo "<label for='no'>No</label><br>";
                 echo "<input type='hidden' id='blogId' name='blogId' value='$blog_id'>";
                 echo "<button type='submit' name=insert value='Post Comment'>Post Comment</button>";
                 echo "</form>";
@@ -94,15 +99,52 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         }
         ?>
     </div>
+
     <?php
     if(isset($_POST['insert'])){
         $content = $_POST['content'];
         $blog_id = $_POST['blogId'];
-        echo ("<script LANGUAGE='JavaScript'>
-        window.alert('Hello i am a test :))))) $content $blog_id');
-       </script>");
+        $username = $_SESSION["login_user"];
+        $sentiment = $_POST['sentiment'];
+        $current_date = date("Y-m-d");
+
+        $content = stripcslashes($content);
+        $content = mysqli_real_escape_string($conn_comp440, $content);
+
+        // get all comments posted by user for current day
+        $sql_num_comments = "SELECT COUNT(*) FROM comments WHERE ownerUsername=$username AND datePosted=$current_date";
+        $result_num_comments = mysqli_query($conn_comp440, $sql_num_comments);
+
+        // if user has posted less than 3 comments in the current day, allow to post comment
+        if($result_num_comments->num_rows < 3) {
+            $sql = "INSERT INTO comments (content, datePosted, ownerUsername, sentiment) 
+                    VALUES ('$content', '$current_date', '$username', $sentiment)";
+            if ($conn_comp440->query($sql) === TRUE) {
+                // insert into relation table
+                $sql_comm_id = "SELECT commentId FROM comments ORDER BY commentId DESC LIMIT 1";
+                $result_comm_id = mysqli_query($conn_comp440, $sql_comm_id);
+                while ($row = $result_comm_id->fetch_assoc()) {
+                    $comment_id = $row["commentId"];
+                }
+                $sql2 = "INSERT INTO blog_comments (blogId, commentId) VALUES ($blog_id, $comment_id)";
+                if($conn_comp440->query($sql2) === TRUE){
+                    echo ("<script LANGUAGE='JavaScript'>
+                    window.alert('it worked!');
+                    </script>");
+                } else {
+                    echo ("<script LANGUAGE='JavaScript'>
+                    window.alert('Something went wrong...');
+                    </script>");
+                }
+            }
+        } else {
+            echo ("<script LANGUAGE='JavaScript'>
+                window.alert('You may not post more than three comments per day, please try again tomorrow.');
+                </script>");
+        }
     }
     ?>
+
     <br>
     <h2><a href="homepage.php">Back to Homepage</a></h2>
 </body>
