@@ -39,8 +39,8 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         $result_blogs = mysqli_query($conn_comp440, $sql_get_blogs);
 
         // get all the tags
-        $sql_get_tags = "SELECT * FROM tags";
-        $result_tags = mysqli_query($conn_comp440, $sql_get_tags);
+        // $sql_get_tags = "SELECT * FROM tags";
+        // $result_tags = mysqli_query($conn_comp440, $sql_get_tags);
 
         // get all the comments
 
@@ -112,11 +112,12 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         $content = mysqli_real_escape_string($conn_comp440, $content);
 
         // get all comments posted by user for current day
-        $sql_num_comments = "SELECT COUNT(*) FROM comments WHERE ownerUsername=$username AND datePosted=$current_date";
+        $sql_num_comments = "SELECT * FROM comments WHERE ownerUsername='$username' AND datePosted='$current_date'";
         $result_num_comments = mysqli_query($conn_comp440, $sql_num_comments);
+        $count = mysqli_num_rows($result_num_comments);
 
         // if user has posted less than 3 comments in the current day, allow to post comment
-        if($result_num_comments->num_rows < 3) {
+        if($count < 3) {
             $sql = "INSERT INTO comments (content, datePosted, ownerUsername, sentiment) 
                     VALUES ('$content', '$current_date', '$username', $sentiment)";
             if ($conn_comp440->query($sql) === TRUE) {
@@ -128,9 +129,10 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                 }
                 $sql2 = "INSERT INTO blog_comments (blogId, commentId) VALUES ($blog_id, $comment_id)";
                 if($conn_comp440->query($sql2) === TRUE){
-                    echo ("<script LANGUAGE='JavaScript'>
-                    window.alert('it worked!');
-                    </script>");
+                    // echo ("<script LANGUAGE='JavaScript'>
+                    // window.alert('it worked!');
+                    // </script>");
+                    echo ("<script LANGUAGE='Javascript'>window.location.href = window.location.href;</script>");
                 } else {
                     echo ("<script LANGUAGE='JavaScript'>
                     window.alert('Something went wrong...');
