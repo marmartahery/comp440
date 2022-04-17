@@ -27,7 +27,7 @@
 <br><button type="submit"><a href="newblog.php">New Blog Post</a></button><br>
 
 <br>
-    <h2><a href="logout.php">Sign Out</a></h2>
+<h2><a href="homepage.php">Back to Homepage</a></h2> 
 
 </body>
 </html>

@@ -4,6 +4,7 @@ use `comp440`;
 -- Drop all tables
 --
 DROP TABLE IF EXISTS `blog_tags`;
+DROP TABLE IF EXISTS `blog_comments`;
 DROP TABLE IF EXISTS `comments`;
 DROP TABLE IF EXISTS `blogs`;
 DROP TABLE IF EXISTS `tags`;
@@ -16,7 +17,7 @@ SET FOREIGN_KEY_CHECKS=0;
 CREATE TABLE blogs (
 	blogId int NOT NULL AUTO_INCREMENT,
 	blogTitle varchar(100) NOT NULL,
-	content varchar(500) NOT NULL,
+	content varchar(2500) NOT NULL,
 	ownerUsername varchar(20), 		        -- will be username
 	datePosted DATE NOT NULL,
 	PRIMARY KEY(blogId),
@@ -79,23 +80,43 @@ INSERT INTO `blog_tags` (blogId, tagId) VALUES (5, 4);
 -- Table structure for table `comments`
 CREATE TABLE comments (
 	commentId int AUTO_INCREMENT,
-	blogId int,
 	ownerUsername varchar(20), 			    -- will be username
 	content varchar(250) NOT NULL,
 	sentiment tinyint(1) NOT NULL,
 	datePosted DATE NOT NULL,
 	PRIMARY KEY(commentID),
-	FOREIGN KEY (blogId) REFERENCES blogs(blogId),
 	FOREIGN KEY (ownerUsername) REFERENCES user(username)
 );
 
 --
 -- Populate data into comments table
 --
-INSERT INTO `comments` (blogId, ownerUsername, content, sentiment, datePosted) VALUES (1, 'mrcat20', 'sounds good!', 1, '2022-05-01');
-INSERT INTO `comments` (blogId, ownerUsername, content, sentiment, datePosted) VALUES (2, 'bigjuicy96', 'lmaoooo', 1, '2022-05-02');
-INSERT INTO `comments` (blogId, ownerUsername, content, sentiment, datePosted) VALUES (3, 'cheese467', 'i think my cat does more than eat and sleep but pop off i guess', 1, '2022-05-02');
-INSERT INTO `comments` (blogId, ownerUsername, content, sentiment, datePosted) VALUES (3, 'bigjuicy96', 'cats dont lift couldnt be me', 0, '2022-05-02');
-INSERT INTO `comments` (blogId, ownerUsername, content, sentiment, datePosted) VALUES (4, 'cheese467', 'maine coons are definitely the cutest!!', 1, '2022-05-03');
+INSERT INTO `comments` (ownerUsername, content, sentiment, datePosted) VALUES ('mrcat20', 'sounds good!', 1, '2022-05-01');
+INSERT INTO `comments` (ownerUsername, content, sentiment, datePosted) VALUES ('bigjuicy96', 'lmaoooo', 1, '2022-05-02');
+INSERT INTO `comments` (ownerUsername, content, sentiment, datePosted) VALUES ('cheese467', 'i think my cat does more than eat and sleep but pop off i guess', 1, '2022-05-02');
+INSERT INTO `comments` (ownerUsername, content, sentiment, datePosted) VALUES ('bigjuicy96', 'cats dont lift couldnt be me', 0, '2022-05-02');
+INSERT INTO `comments` (ownerUsername, content, sentiment, datePosted) VALUES ('cheese467', 'maine coons are definitely the cutest!!', 1, '2022-05-03');
+
+-- connects our blogs and comments, both are foreign keys
+--
+-- Table structure for table `blog_comments`
+--
+CREATE TABLE blog_comments (
+	id int AUTO_INCREMENT,
+	blogId int,
+	commentId int,
+	PRIMARY KEY(id),
+	FOREIGN KEY (blogId) REFERENCES blogs(blogId),
+	FOREIGN KEY (commentId) REFERENCES comments(commentId)
+);
+
+--
+-- Populate data into blog_comments table
+--
+INSERT INTO `blog_comments` (blogId, commentId) VALUES (1, 1);
+INSERT INTO `blog_comments` (blogId, commentId) VALUES (2, 2);
+INSERT INTO `blog_comments` (blogId, commentId) VALUES (3, 3);
+INSERT INTO `blog_comments` (blogId, commentId) VALUES (3, 4);
+INSERT INTO `blog_comments` (blogId, commentId) VALUES (4, 5);
 
 SET FOREIGN_KEY_CHECKS=1;

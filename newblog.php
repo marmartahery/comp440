@@ -26,15 +26,18 @@
 
 <form name="newblog" action="newblog.php" method="POST">
 <label for="uname"></label><br>
-      <input type="text" id="subject" name="subject" placeholder="Subject"><br>
+<div class="form-area">
+      <input type="text" id="title" name="title" placeholder="Title"><br>
       <!-- <input style="height:200px" type="textarea" id="description" name="description" placeholder="Description"><br> -->
-      <textarea type="text" id="description" name="description" placeholder="Description"></textarea><br>
-      <input type="text" id="tags" name="tags" placeholder="Tag #1"><br>      
-      <input type="text" id="tags" name="tags" placeholder="Tag #2"><br>
-      <input type="text" id="tags" name="tags" placeholder="Tag #3"><br>            
+      <textarea type="text" style="resize: none; height:200px" id="blog-content" name="blog-content" maxlength="2500" placeholder="Write your post here!"></textarea><br>
+      <h2>Add up to 3 tags to help users find your post:</h2>
+      <input type="text" id="tags" name="tags" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #1"><br>      
+      <input type="text" id="tags" name="tags" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #2"><br>
+      <input type="text" id="tags" name="tags" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #3"><br>            
       <button type="submit"><a href="currentblog.php">Create New Post</a></button>
     </form><br>
-    <h2><a href="logout.php">Sign Out</a></h2>
+    <h2><a href="homepage.php">Back to Homepage</a></h2> 
+</div>
 
 </body>
 </html>
