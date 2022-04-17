@@ -25,7 +25,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     <br><button type="submit"><a href="newblog.php">New Blog Post</a></button><br>
     <div>
         <?php
-        include("config.php");
+        //include("config.php");
 
         // get the total number of blogs
         $sql_count_blogs = "SELECT COUNT(*) FROM blogs";

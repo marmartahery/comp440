@@ -29,14 +29,48 @@
 <div class="form-area">
       <input type="text" id="title" name="title" placeholder="Title"><br>
       <!-- <input style="height:200px" type="textarea" id="description" name="description" placeholder="Description"><br> -->
-      <textarea type="text" style="resize: none; height:200px" id="blog-content" name="blog-content" maxlength="2500" placeholder="Write your post here!"></textarea><br>
+      <input type="text" style="resize: none; height:200px" id="blog-content" name="blog-content" maxlength="2500" placeholder="Write your post here!"></textarea><br>
       <h2>Add up to 3 tags to help users find your post:</h2>
-      <input type="text" id="tags" name="tags" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #1"><br>      
-      <input type="text" id="tags" name="tags" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #2"><br>
-      <input type="text" id="tags" name="tags" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #3"><br>            
-      <button type="submit"><a href="currentblog.php">Create New Post</a></button>
+      <input type="text" id="tag1" name="tag1" pattern="/^[a-zA-Z]*$/" maxlength="20" minlength="1" placeholder="Tag #1"><br>      
+      <input type="text" id="tag2" name="tag2" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #2"><br>
+      <input type="text" id="tag3" name="tag3" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #3"><br>            
+      <button type="submit" id="btn" name="newB"><a href="currentblog.php">Create New Post</a></button>
     </form><br>
     <h2><a href="homepage.php">Back to Homepage</a></h2> 
+</div>
+<div>
+  <?php
+  if(isset($_POST['newB'])){
+    if(mysqli_connect_errno()) {  
+      die("Failed to connect with MySQL: ". mysqli_connect_error());  
+  } 
+  $title = $_POST['title'];
+  $bcontent = $_POST['blog-content'];
+  $tag1 = $_POST['tag1'];
+  $tag2 = $_POST['tag2'];
+  $tag3 = $_POST['tag3'];
+  $currdate = date("Y-m-d");
+
+  $title = stripcslashes($title);
+  $bcontent = stripcslashes($bcontent);
+  $tag1 = stripcslashes($tag1);
+  $tag2 = stripcslashes($tag2);
+  $tag3 = stripcslashes($tag3);
+  $title = mysqli_real_escape_string($conn_comp44, $title);
+  $bcontent = mysqli_real_escape_string($conn_comp44, $bcontent);
+  $tag1 = mysqli_real_escape_string($conn_comp44, $tag1);
+  $tag2 = mysqli_real_escape_string($conn_comp44, $tag2);
+  $tag3 = mysqli_real_escape_string($conn_comp44, $tag3);
+
+  $sql = "INSERT INTO user (blogTitle, content, ownerUsername, datePosted)
+                  VALUES ('$title', '$bcontent', '$user_name','$currdate')";
+  if ($conn->query($sql) === TRUE) {
+          echo ("<script LANGUAGE='JavaScript'>
+                 window.alert('Data Added!');
+                </script>");
+            } 
+  }
+  ?>
 </div>
 
 </body>
