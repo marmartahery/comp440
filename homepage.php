@@ -38,10 +38,8 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         ?>
     <br>
 
-    <div>
       <button type="submit"><a href="newblog.php">New Blog Post</a></button>
       <button type="submit"><a href="viewblogs.php">View Blogs</a></button>
-    </div>
 
     <br>
     <h2><a href="logout.php">Sign Out</a></h2>

@@ -25,7 +25,6 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     <br><button type="submit"><a href="newblog.php">New Blog Post</a></button><br>
     <div>
         <?php
-        // include("config.php");
 
         // get the total number of blogs
         $sql_count_blogs = "SELECT COUNT(*) FROM blogs";
@@ -51,9 +50,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                 echo "<div class='card'>";
                 echo "<div class='container'>";
                 echo "<p class='blog-title'>Title: " . $row["blogTitle"] . "</p>";
-                echo "<p class='blog-owner'>&nbsp by " . $row["ownerUsername"] . "</p>";
-                echo "<p class='date'>&nbsp&nbsp" . $row["datePosted"] . "</p>";
-                echo "<br><p class='blog-content'>" . $row["content"] . "</p>";
+                echo "<p class='blog-owner'>&nbsp&nbspAuthor: ". $row["ownerUsername"] ."</p>";
+                echo "<p class='date'>&nbsp&nbsp&nbsp". $row["datePosted"] . "</p>";
+                echo "<br><p class='blog-content'>“" . $row["content"] . "” </p>";
 
                 // add associated tags to blog post
                 $sql_get_tags = "SELECT tagTitle FROM tags WHERE tagId IN (SELECT tagId FROM blog_tags WHERE blogId=$blog_id)";
@@ -62,7 +61,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                 if ($result_tags->num_rows > 0) {
                     while ($row = $result_tags->fetch_assoc()) {
                         // echo "<p class='tags'>" .$row["tagTitle"]."</p>";
-                        echo " '" . $row["tagTitle"] . "' ";
+                        echo " ‘" . $row["tagTitle"] . "’ ";
                     }
                 }
                 echo "</p>";
@@ -75,26 +74,25 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                 if ($result_comments->num_rows > 0) {
                     while ($row = $result_comments->fetch_assoc()) {
                         echo "<br>";
-                        echo "<p class='comments'>&nbsp" . $row["ownerUsername"] . "</p>";
-                        echo "<p class='tags'>&nbsp&nbsp" . $row["content"] . "</p>";
-                        echo "<p class='date'>&nbsp&nbsp" . $row["datePosted"] . "</p>";
+                        echo "<p class='commentOwner'>" . $row["ownerUsername"] . ":</p>";
+                        echo "<p class='comments'>&nbsp&nbsp" . $row["content"] . "</p>";
+                        echo "<p class='date'>&nbsp&nbsp&nbsp" . $row["datePosted"] . "</p>";
+                        echo "<br>";
                     }
                 }
-
-                // $comment_blog_id = "comment-" .$blog_id . "";
-                echo "<form action='viewblogs.php' method='POST'>";
-                echo "<input type='text' style='resize: none; height:100px' id='content' name='content' minlength=1 maxlength=250 placeholder='Leave a comment...'><br>";
-                echo "<p>Did you like this post?</p>";
-                echo "<input type='radio' id='yes' name='sentiment' value=1 checked>";                
-                echo "<label for='yes'>Yes</label><br>";
-                echo "<input type='radio' id='no' name='sentiment' value=0>";
-                echo "<label for='no'>No</label><br>";
-                echo "<input type='hidden' id='blogId' name='blogId' value='$blog_id'>";
-                echo "<button type='submit' name=insert value='Post Comment'>Post Comment</button>";
-                echo "</form>";
-                echo "</div>";
-                echo "</div>";
-                echo "<br>";
+               echo "<form action='viewblogs.php' method='POST'>";
+               echo "<input class='comment-area' type='textarea' style='resize: none; height:100px' id='content' name='content' minlength=1 maxlength=250 placeholder='Leave a comment...'><br>";
+               echo "<p class='comment-section-title'>Did you like this post?</p>";
+               echo "<input class='radiostyle' type='radio' id='yes' name='sentiment' value=1 checked>";                
+               echo "<label class='comment-section-title' for='yes'>&nbsp&nbspYes</label><br>";
+               echo "<input class='radiostyle' type='radio' id='no' name='sentiment' value=0>";
+               echo "<label class='comment-section-title'for='no'>&nbsp&nbspNo</label><br>";
+               echo "<input type='hidden' id='blogId' name='blogId' value='$blog_id'>";
+               echo "<button type='submit' name=insert value='Post Comment'>Post Comment</button>";
+               echo "</form>";
+               echo "</div>";
+               echo "</div>";
+               echo "<br>";
             }
         }
         ?>
