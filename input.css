@@ -12,6 +12,7 @@ margin: 0 auto;
 
 body {
     background-image: url("./assets/background.jpg");
+    background-attachment: fixed;
 }
 
 h1 {
@@ -73,6 +74,17 @@ button:hover{
     background-color: #ffc2a6; 
 }
 
+.comment-area {
+    overflow: scroll;
+    width: 700px;
+    height: 10px;
+}
+
+.radiostyle {
+    display: inline-block;
+    width: 40px;
+}
+
 input {
     border-radius: .5em;
     border: 0px solid #ccc;
@@ -103,6 +115,7 @@ i {
 
 }
 
+
 .form-area {
     margin: 0 auto;
     max-width: 550px;
@@ -124,28 +137,41 @@ i {
     text-align: left;
     font-weight: bold;
     font-family: Arial;
+    margin-top: 17px;
 }
 
 .blog-owner {
     margin: 0;
     font-size: 15pt;
+    font-style: italic;
     text-align: left;
     font-weight: bold;
     font-family: Arial;
+    margin-top: 3px;
 }
 
 .blog-content {
     margin: 0;
-    font-size: 12pt;
+    font-size: 15pt;
     text-align: left;
-    font-family: Arial;
+    font-family: Courier;
 }
 
 .tags {
     margin: 0;
-    font-size: 12pt;
+    font-size: 10pt;
+    text-align: right;
+    font-family: Arial;
+}
+
+.commentOwner {
+    margin: 0;
+    font-size: 14pt;
+    font-weight: bold;
+    font-style: italic;
     text-align: left;
     font-family: Arial;
+    margin-top: 3px;
 }
 
 .comment-section-title {
@@ -160,27 +186,30 @@ i {
     margin: 0;
     font-size: 12pt;
     text-align: left;
-    font-weight: bold;
     font-family: Arial;
 }
 
 .date {
     margin: 0;
     font-size: 12pt;
+    font-style: italic;
     text-align: left;
-    font-family: Courier New;
+    font-family: Arial;
+    margin-top: 3px;
 }
 
 .card {
     /* Add shadows to create the "card" effect */
-    background-color: white;
+    background-color: rgba(255,255,255,.30);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+    margin: auto;
+    width: 800px;
   }
 
   /* On mouse-over, add a deeper shadow */
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
   }
 
 /* Add some padding inside the card container */
