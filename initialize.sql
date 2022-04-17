@@ -16,7 +16,7 @@ SET FOREIGN_KEY_CHECKS=0;
 CREATE TABLE blogs (
 	blogId int NOT NULL AUTO_INCREMENT,
 	blogTitle varchar(100) NOT NULL,
-	content varchar(500) NOT NULL,
+	content varchar(2500) NOT NULL,
 	ownerUsername varchar(20), 		        -- will be username
 	datePosted DATE NOT NULL,
 	PRIMARY KEY(blogId),

@@ -102,3 +102,18 @@ i {
     margin: 0 auto;
 
 }
+
+.form-area {
+    margin: 0 auto;
+    max-width: 550px;
+    margin-bottom: 4em;
+    padding: 0 2em;
+}
+
+.form-wrapper {
+    display: flex;
+}
+
+.form-wrapper textarea {
+    flex: 1;
+}
