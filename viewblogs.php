@@ -22,6 +22,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 </head>
 
 <body>
+    <h2><a href="homepage.php">Back to Homepage</a></h2>
     <br><button type="submit"><a href="newblog.php">New Blog Post</a></button><br>
     <div>
         <?php
@@ -31,17 +32,10 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         $num_blogs = mysqli_query($conn_comp440, $sql_count_blogs);
         $row_count = mysqli_fetch_array($num_blogs);
         $blog_count = $row_count[0];
-        echo "There are $blog_count posts.";
 
         // get all the blogs
         $sql_get_blogs = "SELECT * FROM blogs";
         $result_blogs = mysqli_query($conn_comp440, $sql_get_blogs);
-
-        // get all the tags
-        // $sql_get_tags = "SELECT * FROM tags";
-        // $result_tags = mysqli_query($conn_comp440, $sql_get_tags);
-
-        // get all the comments
 
         if ($result_blogs->num_rows > 0) {
             while ($row = $result_blogs->fetch_assoc()) {
@@ -81,7 +75,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                     }
                 }
                echo "<form action='viewblogs.php' method='POST'>";
-               echo "<input class='comment-area' type='textarea' style='resize: none; height:100px' id='content' name='content' minlength=1 maxlength=250 placeholder='Leave a comment...'><br>";
+               echo "<input class='comment-area' type='textarea' style='resize: none; height:100px' id='content' name='content' minlength=1 maxlength=250 placeholder='Leave a comment...' required><br>";
                echo "<p class='comment-section-title'>Did you like this post?</p>";
                echo "<input class='radiostyle' type='radio' id='yes' name='sentiment' value=1 checked>";                
                echo "<label class='comment-section-title' for='yes'>&nbsp&nbspYes</label><br>";
@@ -114,32 +108,42 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         $result_num_comments = mysqli_query($conn_comp440, $sql_num_comments);
         $count = mysqli_num_rows($result_num_comments);
 
-        // if user has posted less than 3 comments in the current day, allow to post comment
-        if($count < 3) {
-            $sql = "INSERT INTO comments (content, datePosted, ownerUsername, sentiment) 
-                    VALUES ('$content', '$current_date', '$username', $sentiment)";
-            if ($conn_comp440->query($sql) === TRUE) {
-                // insert into relation table
-                $sql_comm_id = "SELECT commentId FROM comments ORDER BY commentId DESC LIMIT 1";
-                $result_comm_id = mysqli_query($conn_comp440, $sql_comm_id);
-                while ($row = $result_comm_id->fetch_assoc()) {
-                    $comment_id = $row["commentId"];
+        // get author of post
+        $sql_get_owner_username = "SELECT * FROM blogs WHERE blogId='$blog_id'";
+        $result_get_owner_username = mysqli_query($conn_comp440, $sql_get_owner_username);
+        $row = mysqli_fetch_assoc($result_get_owner_username);
+        $owner_username = $row['ownerUsername'];
+
+        // if user is trying to comment on their own post, disallow
+        if($owner_username != $username){
+            // if user has posted less than 3 comments in the current day, allow to post comment
+            if($count < 3) {
+                $sql = "INSERT INTO comments (content, datePosted, ownerUsername, sentiment) 
+                        VALUES ('$content', '$current_date', '$username', $sentiment)";
+                if ($conn_comp440->query($sql) === TRUE) {
+                    // insert into relation table
+                    $sql_comm_id = "SELECT commentId FROM comments ORDER BY commentId DESC LIMIT 1";
+                    $result_comm_id = mysqli_query($conn_comp440, $sql_comm_id);
+                    while ($row = $result_comm_id->fetch_assoc()) {
+                        $comment_id = $row["commentId"];
+                    }
+                    $sql2 = "INSERT INTO blog_comments (blogId, commentId) VALUES ($blog_id, $comment_id)";
+                    if($conn_comp440->query($sql2) === TRUE){
+                        echo ("<script LANGUAGE='Javascript'>window.location.href = window.location.href;</script>");
+                    } else {
+                        echo ("<script LANGUAGE='JavaScript'>
+                        window.alert('Something went wrong...');
+                        </script>");
+                    }
                 }
-                $sql2 = "INSERT INTO blog_comments (blogId, commentId) VALUES ($blog_id, $comment_id)";
-                if($conn_comp440->query($sql2) === TRUE){
-                    // echo ("<script LANGUAGE='JavaScript'>
-                    // window.alert('it worked!');
-                    // </script>");
-                    echo ("<script LANGUAGE='Javascript'>window.location.href = window.location.href;</script>");
-                } else {
-                    echo ("<script LANGUAGE='JavaScript'>
-                    window.alert('Something went wrong...');
+            } else {
+                echo ("<script LANGUAGE='JavaScript'>
+                    window.alert('You may not post more than three comments per day, please try again tomorrow.');
                     </script>");
-                }
             }
         } else {
             echo ("<script LANGUAGE='JavaScript'>
-                window.alert('You may not post more than three comments per day, please try again tomorrow.');
+                window.alert('You may not comment on your own post.');
                 </script>");
         }
     }

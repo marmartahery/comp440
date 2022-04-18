@@ -33,7 +33,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
             //include("config.php");
 
             $conn_comp440->multi_query(file_get_contents('initialize.sql'));
-            echo 'Database initialized!';
+            echo ("<script LANGUAGE='JavaScript'>
+            window.alert('Database initialized!');
+            </script>");
           }
         ?>
     <br>
