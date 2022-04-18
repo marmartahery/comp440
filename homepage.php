@@ -30,7 +30,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     </form>
         <?php
           if(isset($_POST['initialize'])){
-            include("config.php");
+            //include("config.php");
 
             $conn_comp440->multi_query(file_get_contents('initialize.sql'));
             echo 'Database initialized!';
@@ -38,7 +38,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         ?>
     <br>
 
-      <button type="submit"><a href="newblog.php">New Blog Post</a></button>
+      <button type="submit"><a href="newblog.php">New Blog Post</a></button><br><br>
       <button type="submit"><a href="viewblogs.php">View Blogs</a></button>
 
     <br>
