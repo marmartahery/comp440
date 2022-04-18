@@ -30,8 +30,6 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     </form>
         <?php
           if(isset($_POST['initialize'])){
-            //include("config.php");
-
             $conn_comp440->multi_query(file_get_contents('initialize.sql'));
             echo ("<script LANGUAGE='JavaScript'>
             window.alert('Database initialized!');
