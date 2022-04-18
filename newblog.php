@@ -170,14 +170,14 @@
           }
         }
       }
+      echo ("<script LANGUAGE='JavaScript'>
+        window.alert('Blog posted!');
+        </script>");
     } else {
       echo ("<script LANGUAGE='JavaScript'>
           window.alert('You may not post more than two blogs per day, please try again tomorrow.');
           </script>");
     }
-    echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Blog posted!');
-    </script>");
   }
   ?>
 </div>
