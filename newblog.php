@@ -114,7 +114,7 @@
           }
         }
         if($tag2 != null && $tag2 != $tag1) {
-          $sql_check_tag_exist = "SELECT * FROM tags WHERE tagTitle LIKE $tag2";
+          $sql_check_tag_exist = "SELECT * FROM tags WHERE tagTitle='$tag2'";
           $result_check_tag_exist = mysqli_query($conn_comp440, $sql_check_tag_exist);
           $count = mysqli_num_rows($result_check_tag_exist);
           if($count == 0) {
@@ -142,7 +142,7 @@
           }
         }
         if($tag3 != null && $tag3 != $tag2 && $tag3 != $tag1) {
-          $sql_check_tag_exist = "SELECT * FROM tags WHERE tagTitle LIKE $tag3";
+          $sql_check_tag_exist = "SELECT * FROM tags WHERE tagTitle='$tag3'";
           $result_check_tag_exist = mysqli_query($conn_comp440, $sql_check_tag_exist);
           $count = mysqli_num_rows($result_check_tag_exist);
           if($count == 0) {
