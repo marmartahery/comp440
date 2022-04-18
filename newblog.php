@@ -31,7 +31,7 @@
       <!-- <input style="height:200px" type="textarea" id="description" name="description" placeholder="Description"><br> -->
       <input type="text" style="resize: none; height:200px" id="blog-content" name="blog-content" maxlength="2500" placeholder="Write your post here!"></textarea><br>
       <h2>Add up to 3 tags to help users find your post:</h2>
-      <input type="text" id="tag1" name="tag1" pattern="/^[a-zA-Z]*$/" maxlength="20" minlength="1" placeholder="Tag #1"><br>      
+      <input type="text" id="tag1" name="tag1" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #1"><br>      
       <input type="text" id="tag2" name="tag2" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #2"><br>
       <input type="text" id="tag3" name="tag3" pattern="/^[a-zA-Z]*$/" maxlength="20" placeholder="Tag #3"><br>            
       <button type="submit" id="btn" name="newB"><a href="currentblog.php">Create New Post</a></button>
