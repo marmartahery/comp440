@@ -3,9 +3,9 @@ use `comp440`;
 --
 -- Drop all tables
 --
-DROP TABLE IF EXISTS `hobbies`;
 DROP TABLE IF EXISTS `user_hobbies`;
-DROP TABLE IF EXISTS `uesr_following`;
+DROP TABLE IF EXISTS `hobbies`;
+DROP TABLE IF EXISTS `user_following`;
 DROP TABLE IF EXISTS `blog_tags`;
 DROP TABLE IF EXISTS `blog_comments`;
 DROP TABLE IF EXISTS `comments`;
@@ -50,7 +50,6 @@ CREATE TABLE user_hobbies (
 --
 -- Populate initial data for table user_hobbies
 --
--- SELECT COUNT(*) FROM user_hobbies WHERE user=$user_name GROUP BY user;
 INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('cheese467', 2);
 INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('cheese467', 5);
 INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('mrcat20', 1);
