@@ -3,6 +3,9 @@ use `comp440`;
 --
 -- Drop all tables
 --
+DROP TABLE IF EXISTS `hobbies`;
+DROP TABLE IF EXISTS `user_hobbies`;
+DROP TABLE IF EXISTS `uesr_following`;
 DROP TABLE IF EXISTS `blog_tags`;
 DROP TABLE IF EXISTS `blog_comments`;
 DROP TABLE IF EXISTS `comments`;
@@ -10,6 +13,71 @@ DROP TABLE IF EXISTS `blogs`;
 DROP TABLE IF EXISTS `tags`;
 
 SET FOREIGN_KEY_CHECKS=0;
+
+--
+-- Table structure for table `hobbies`
+--
+CREATE TABLE hobbies (
+	hobbyId int NOT NULL AUTO_INCREMENT,
+	hobbyName varchar(20),
+	PRIMARY KEY(hobbyId)
+);
+
+--
+-- Populate initial data for table hobbies
+--
+INSERT INTO `hobbies` (hobbyName) VALUES ('hiking');
+INSERT INTO `hobbies` (hobbyName) VALUES ('swimming');
+INSERT INTO `hobbies` (hobbyName) VALUES ('calligraphy');
+INSERT INTO `hobbies` (hobbyName) VALUES ('bowling');
+INSERT INTO `hobbies` (hobbyName) VALUES ('movie');
+INSERT INTO `hobbies` (hobbyName) VALUES ('cooking');
+INSERT INTO `hobbies` (hobbyName) VALUES ('dancing');
+
+
+--
+-- Table structure for table `user_hobbies`
+--
+CREATE TABLE user_hobbies (
+	id int NOT NULL AUTO_INCREMENT,
+	user varchar(20),
+	hobbyId int,
+	PRIMARY KEY(id),
+	FOREIGN KEY (user) REFERENCES user(username),
+	FOREIGN KEY (hobbyId) REFERENCES hobbies(hobbyId)
+);
+
+--
+-- Populate initial data for table user_hobbies
+--
+-- SELECT COUNT(*) FROM user_hobbies WHERE user=$user_name GROUP BY user;
+INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('cheese467', 2);
+INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('cheese467', 5);
+INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('mrcat20', 1);
+INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('mrcat20', 3);
+INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('mrcat20', 6);
+INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('bigjuicy96', 4);
+INSERT INTO `user_hobbies` (user, hobbyId) VALUES ('bigjuicy96', 7);
+
+--
+-- Table structure for table `following`
+--
+CREATE TABLE user_following (
+	id int NOT NULL AUTO_INCREMENT,
+	user varchar(20),
+	followingUser varchar(20),
+	PRIMARY KEY(id),
+	FOREIGN KEY (user) REFERENCES user(username),
+	FOREIGN KEY (followingUser) REFERENCES user(username)
+);
+
+--
+-- Populate initial data for table followers
+--
+INSERT INTO `user_following` (user, followingUser) VALUES ('cheese467', 'mrcat20');
+INSERT INTO `user_following` (user, followingUser) VALUES ('mrcat20', 'cheese467');
+INSERT INTO `user_following` (user, followingUser) VALUES ('cheese467', 'bigjuicy96');
+INSERT INTO `user_following` (user, followingUser) VALUES ('mrcat20', 'bigjuicy96');
 
 --
 -- Table structure for table `blogs`
