@@ -114,8 +114,14 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         $row = mysqli_fetch_assoc($result_get_owner_username);
         $owner_username = $row['ownerUsername'];
 
+        // get all the comments on the current blog posted by the current user
+        $sql_get_user_comms = "SELECT * FROM comments WHERE commentId IN (SELECT commentId FROM blog_comments WHERE blogId=$blog_id) AND ownerUsername='$username'";
+        $result_num_user_comms = mysqli_query($conn_comp440, $sql_get_user_comms);
+        $num_user_comms = mysqli_num_rows($result_num_user_comms);    
+
         // if user is trying to comment on their own post, disallow
-        if($owner_username != $username){
+        // if user has already commented on the current post, disallow
+        if($owner_username != $username && $num_user_comms == 0){
             // if user has posted less than 3 comments in the current day, allow to post comment
             if($count < 3) {
                 $sql = "INSERT INTO comments (content, datePosted, ownerUsername, sentiment) 
@@ -142,9 +148,15 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                     </script>");
             }
         } else {
-            echo ("<script LANGUAGE='JavaScript'>
+            if($owner_username == $username) {
+                echo ("<script LANGUAGE='JavaScript'>
                 window.alert('You may not comment on your own post.');
                 </script>");
+            } else {
+                echo ("<script LANGUAGE='JavaScript'>
+                window.alert('You may not comment more than once on a post.');
+                </script>");
+            }
         }
     }
     ?>
