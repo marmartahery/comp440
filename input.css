@@ -28,6 +28,28 @@ h2 {
     font-family: Arial;
 }
 
+h3 {
+    font-size: 15pt;
+    text-align: center;
+    font-style: italic;
+    font-family: Arial;
+    text-decoration: underline;
+}
+
+h4 {
+    font-size: 13pt;
+    text-align: center;
+    font-family: Arial;
+}
+
+h5 {
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 13pt;
+    text-align: center;
+    font-family: Arial;
+}
+
 a:link{
     color: blue;
     text-decoration: underline;
@@ -217,10 +239,21 @@ i {
     padding: 2px 16px;
   }
 
+.container2 {
+    margin: 0 auto;
+    padding: 2px 16px;
+    text-align: center;
+} 
+
 .left {
     align-content: left;
 }
 
 .right {
     align-content: right;
+}
+
+.tableFol {
+    margin: 0 auto;
+    width: 20%;
 }

@@ -37,7 +37,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
           }
         ?>
     <br>
-
+      <button type="submit"><a href="profile.php">View Your Profile</a></button><br><br>
       <button type="submit"><a href="newblog.php">New Blog Post</a></button><br><br>
       <button type="submit"><a href="viewblogs.php">View Blogs</a></button>
 

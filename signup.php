@@ -89,8 +89,9 @@ session_start();
             $_SESSION["login_user"] = $username;
               echo ("<script LANGUAGE='JavaScript'>
                window.alert('User Created!');
-              window.location.href='http://localhost:3000/homepage.php';
+              window.location.href='http://localhost:3000/hobbies.php';
               </script>");
+              // user is redirected to hobbies.php instead to select hobbies
           } 
         } else {
           echo ("<script LANGUAGE='JavaScript'>
