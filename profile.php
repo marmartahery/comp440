@@ -41,7 +41,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
       <h4>Username: <?php echo $username ?></h4><br>
       <h4>Hobbies: <?php echo $hobbies?><br>
       <!-- need the functionality to call the selected hobbies from the database here -->
-      <h3><table class = tableFol><tr><th>Following</th> <th>Followers</th></h3>
+      <h3><table class = tableFol><tr><th>Following</th> <th>Followers</th></h3><br><br>
+</table><br><br>
+      <button type="submit"><a href="homepage.php">Return to Homepage</a></button>
   </body>
 </html>
 
