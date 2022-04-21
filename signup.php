@@ -87,9 +87,10 @@ session_start();
           if ($conn->query($sql) === TRUE) {
             $username = mysqli_real_escape_string($conn, $_POST['username']);
             $_SESSION["login_user"] = $username;
+            $_SESSION["first_load"] = 1;
               echo ("<script LANGUAGE='JavaScript'>
                window.alert('User Created!');
-              window.location.href='http://localhost:3000/hobbies.php';
+              window.location.href='http://localhost:3000/homepage.php';
               </script>");
               // user is redirected to hobbies.php instead to select hobbies
           } 
