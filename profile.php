@@ -83,6 +83,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     }
   ?>
   <h4 style="text-decoration: underline;">Following</h4>
+  <h4>
   <?php
   // list users being followed by current user
   // get the user names of each person the current user is following
@@ -95,7 +96,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     }
   }
   ?>
+  </h4>
   <h4 style="text-decoration: underline;">Followers</h4>
+  <h4>
   <?php
   // list current user's followers
   // get the user names of each person following the current user
@@ -108,6 +111,8 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     }
   }
   ?>
+  </h4>
+      <button type="submit"><a href="homepage.php">Return to Homepage</a></button>
 </body>
 
 </html>
