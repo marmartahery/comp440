@@ -62,8 +62,13 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
       $result_get_user = mysqli_query($conn_comp440, $sql_get_user);
       $row_count = mysqli_num_rows($result_get_user);
 
-      // make sure user exists and user is not trying to follow themselves
-      if($add_follow != $user_name && $row_count == 1) {
+      // check if user already follows them
+      $sql_check_following = "SELECT followingUser FROM user_following WHERE user='$user_name' AND followingUser='$add_follow'";
+      $result_check_following = mysqli_query($conn_comp440, $sql_check_following);
+      $is_following = mysqli_num_rows($result_check_following);
+
+      // make sure user exists and user is not trying to follow themselves and does not already follow user
+      if($add_follow != $user_name && $row_count == 1 && $is_following == 0) {
         $sql_add_follow = "INSERT INTO user_following (user, followingUser) VALUES ('$user_name', '$add_follow')";
         mysqli_query($conn_comp440, $sql_add_follow);
         echo ("<script LANGUAGE='JavaScript'>
@@ -74,9 +79,13 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
           echo ("<script LANGUAGE='JavaScript'>
           window.alert('You may not follow yourself!');
           </script>");
-        } else {
+        } else if ($row_count == 0){
           echo ("<script LANGUAGE='JavaScript'>
           window.alert('User does not exist.');
+          </script>");
+        } else {
+          echo ("<script LANGUAGE='JavaScript'>
+          window.alert('You are already following this user.');
           </script>");
         }
       }
