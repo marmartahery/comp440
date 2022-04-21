@@ -9,6 +9,16 @@ $result_first = mysqli_query($conn, $qry_first);
 $row_1 = mysqli_fetch_array($result_first, MYSQLI_ASSOC);
 $first = $row_1['first_name'];
 
+// check for hobbies set
+$sql_check = "SELECT * FROM user_hobbies WHERE user='$user_name'";
+$result_check = mysqli_query($conn_comp440, $sql_check);
+$num_hobbies = mysqli_num_rows($result_check);
+if($num_hobbies == 0) {
+  echo ("<script LANGUAGE='JavaScript'>
+        window.alert('Please select your hobbies.!');
+        window.location.href='http://localhost:3000/hobbies.php';
+        </script>");
+}
 echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 ?>
 
@@ -34,6 +44,11 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
             echo ("<script LANGUAGE='JavaScript'>
             window.alert('Database initialized!');
             </script>");
+            echo ("<script LANGUAGE='Javascript'>window.location.href = window.location.href;</script>");
+          //   echo ("<script LANGUAGE='JavaScript'>
+          //   window.alert('Please select your hobbies.!');
+          //  window.location.href='http://localhost:3000/hobbies.php';
+          //  </script>");
           }
         ?>
     <br>
