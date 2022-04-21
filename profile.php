@@ -80,7 +80,6 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
           </script>");
         }
       }
-      
     }
   ?>
   <h4 style="text-decoration: underline;">Following</h4>
