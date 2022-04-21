@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password_in_database = $row_1['password'];
 
     if ($password == $password_in_database) {
+      $_SESSION["first_load"] = 1;
       header("location: homepage.php");
     } else {
       $_SESSION["login_error"] = 'Invalid username or password.';
