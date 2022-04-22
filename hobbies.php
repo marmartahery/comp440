@@ -135,5 +135,3 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
       ?>
   </body>
 </html>
-
-<!-- need the redirect to go back to homepage.php -->
