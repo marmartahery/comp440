@@ -37,17 +37,57 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
             echo 'button 4 worked!';
         }
         if(isset($_POST['button5'])){
-            echo 'button 5 worked!';
+            $qry5 = "SELECT DISTINCT user, user2 FROM
+            (SELECT hobbyId AS hID, user, result.user2
+            FROM user_hobbies
+            JOIN
+            (SELECT user AS user2 , hobbyId
+            FROM user_hobbies) AS result
+            USING (hobbyId)
+            WHERE user != user2 AND user < user2
+            ORDER BY hID ASC) AS result2";
+            $sql5 = mysqli_query($conn_comp440, $qry5);
+            if ($sql5->num_rows > 0) {
+                echo "<br>";
+                while ($row5 = $sql5->fetch_assoc()) {
+                    echo "('" . $row5["user"] . "',";
+                    echo " '" . $row5["user2"] . "')";
+                    echo "<br>";
+                } 
+            }else {
+                echo ("Returned no results :( ");
+              }
         }
         if(isset($_POST['button6'])){
-            echo 'button 6 worked!';
-        }
+            $qry6 = "SELECT username FROM comp440.user 
+            LEFT JOIN comp440.blogs ON user.username=blogs.ownerUsername WHERE blogs.blogId is NULL";
+            $sql6 = mysqli_query($conn_comp440, $qry6);
+            if ($sql6->num_rows > 0) {
+                echo "<br>";
+                while ($row6 = $sql6->fetch_assoc()) {
+                    echo " '" . $row6["username"] . "' ";
+                  }
+                } else {
+                  echo ("Returned no results :( ");
+                }
+            }
         if(isset($_POST['button7'])){
             echo 'button 7 worked!';
         }
         if(isset($_POST['button8'])){
-            echo 'button 8 worked!';
-        }
+            $qry8 = "SELECT ownerUsername 
+            FROM (SELECT ownerUsername, SUM(sentiment) AS sum 
+            FROM comments GROUP BY ownerUsername) AS result WHERE sum = 0";
+            $sql8 = mysqli_query($conn_comp440, $qry8);
+            if ($sql8->num_rows > 0) {
+                echo "<br>";
+                while ($row8 = $sql8->fetch_assoc()) {
+                  echo " '" . $row8["ownerUsername"] . "' ";
+                }
+              } else {
+                echo ("Returned no results :( ");
+              }
+        } 
         if(isset($_POST['button9'])){
             echo 'button 9 worked!';
         }
