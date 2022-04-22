@@ -72,7 +72,21 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                 }
             }
         if(isset($_POST['button7'])){
-            echo 'button 7 worked!';
+            $qry7 = "SELECT username
+            FROM comp440.user
+            LEFT JOIN comp440.comments
+            ON user.username=comments.ownerUsername
+            WHERE comments.commentId is NULL";
+            $sql7 = mysqli_query($conn_comp440, $qry7); 
+
+            if ($sql7->num_rows > 0) {
+                echo "<br>";
+                while ($row7 = $sql7->fetch_assoc()) {
+                    echo " '" . $row7["username"] . "' ";
+                }
+            } else {
+                echo ("Returned no results :(");
+            }
         }
         if(isset($_POST['button8'])){
             $qry8 = "SELECT ownerUsername 
@@ -89,7 +103,26 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
               }
         } 
         if(isset($_POST['button9'])){
-            echo 'button 9 worked!';
+            $qry9 = "SELECT ownerUsername FROM blogs
+                    WHERE ownerUsername NOT IN 
+                    (SELECT ownerUsername FROM blogs
+                    RIGHT JOIN(SELECT blogId
+                        FROM comp440.comments
+                        RIGHT JOIN comp440.blog_comments
+                        ON comments.commentId=blog_comments.commentId
+                        WHERE sentiment='0') AS results 
+                    ON blogs.blogId = results.blogId)
+                    GROUP BY ownerUsername";
+            $sql9 = mysqli_query($conn_comp440, $qry9); 
+
+            if ($sql9->num_rows > 0) {
+                echo "<br>";
+                while ($row9 = $sql9->fetch_assoc()) {
+                  echo " '" . $row9["ownerUsername"] . "' ";
+                }
+            } else {
+                echo ("Returned no results :(");
+            }
         }
     ?>
 </body>
