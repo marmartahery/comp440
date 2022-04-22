@@ -59,13 +59,14 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
     echo ("<script LANGUAGE='JavaScript'>
             window.alert('Database initialized!');
             </script>");
-    echo ("<script LANGUAGE='Javascript'>window.location.href = window.location.href;</script>");
-  }
-  ?>
-  <br>
-  <button type="submit"><a href="profile.php">View Your Profile</a></button><br><br>
-  <button type="submit"><a href="newblog.php">New Blog Post</a></button><br><br>
-  <button type="submit"><a href="viewblogs.php">View Blogs</a></button>
+     echo ("<script LANGUAGE='Javascript'>window.location.href = window.location.href;</script>");
+          }
+        ?>
+    <br>
+      <button type="submit"><a href="profile.php">View Your Profile</a></button><br><br>
+      <button type="submit"><a href="newblog.php">New Blog Post</a></button><br><br>
+      <button type="submit"><a href="viewblogs.php">View Blogs</a></button><br><br>
+      <button type="submit"><a href="part3.php">Part 3 Queries</a></button>
 
   <br>
   <h2><a href="logout.php">Sign Out</a></h2>
