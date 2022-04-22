@@ -28,10 +28,10 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f1" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Lists the users who have posted at least two blogs, one has a tag of “X”, and another has a
         tag of “Y”. "X" and "Y" are inputs.
-      </p>
+        </h4></p>
       <input type="text" id="tagX" name="tagX" placeholder="Tag X" pattern="[A-Za-z]+" maxlength="20" required ?><br>
       <input type="text" id="tagY" name="tagY" placeholder="Tag Y" pattern="[A-Za-z]+" maxlength="20" required ?>
       <br><button type="submit" name="button1">First Query</button><br>
@@ -42,10 +42,10 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f2" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Lists all the blogs of user "X", such that all the comments are positive for these blogs.
         "X" is an input.
-      </p>
+      </h4></p>
       <input type="text" id="usernameX" name="usernameX" placeholder="Username X" pattern="^[a-zA-Z0-9_.-]*" required ?>
       <br><button type="submit" name="button2">Second Query</button><br>
     </div>
@@ -55,10 +55,10 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f3" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Lists the users who posted the most number of blogs on 5/1/2022; if there is a tie,
         then all of the users in the tie will be listed.
-      </p>
+      </h4></p>
       <br><button type="submit" name="button3">Third Query</button><br>
     </div>
   </div>
@@ -67,9 +67,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f4" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Lists the users who are followed by both "X" and "Y". Usernames "X" and "Y" are inputs.
-      </p>
+      </h4></p>
       <input type="text" id="usernameX2" name="usernameX2" placeholder="Username X" pattern="^[a-zA-Z0-9_.-]*" required ?><br>
       <input type="text" id="usernameY2" name="usernameY2" placeholder="Username Y" pattern="^[a-zA-Z0-9_.-]*" required ?>
       <br><button type="submit" name="button4">Fourth Query</button><br>
@@ -80,9 +80,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f5" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Lists user pairs ("X", "Y") such that they have at least one common hobby.
-      </p>
+      </h4></p>
       <br><button type="submit" name="button5">Fifth Query</button><br>
     </div>
   </div>
@@ -91,9 +91,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f6" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Displays all the users who have yet to post a blog.
-      </p>
+      </h4></p>
       <br><button type="submit" name="button6">Sixth Query</button><br>
     </div>
   </div>
@@ -102,9 +102,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f7" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Displays all the users who have yet to post a comment.
-      </p>
+      </h4></p>
       <br><button type="submit" name="button7">Seventh Query</button><br>
     </div>
   </div>
@@ -113,9 +113,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f8" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Displays all the users who have only posted negative comments.
-      </p>
+      </h4></p>
       <br><button type="submit" name="button8">Eighth Query</button><br>
     </div>
   </div>
@@ -124,9 +124,9 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 <form name="f9" action="execution.php" method="POST">
   <div class='card'>
     <div class='container'>
-      <p>
+      <p><h4>
         Displays users who have yet to receive a negative comment on any of their blogs.
-      </p>
+      </h4></p>
       <br><button type="submit" name="button9">Ninth Query</button><br>
     </div>
   </div>

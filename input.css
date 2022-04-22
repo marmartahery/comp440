@@ -51,12 +51,12 @@ h5 {
 }
 
 a:link{
-    color: blue;
+    color: black;
     text-decoration: underline;
 }
 
 a:hover{
-    color: red;
+    color: black;
     text-decoration: underline;
 }
 
