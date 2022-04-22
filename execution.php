@@ -17,13 +17,20 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
 
 <head>
     <meta charset="utf-8">
-    <title>Ninth Query</title>
+    <title>First Query</title>
     <link href="input.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<h2><a href="part3.php">Back to Part 3 Queries Page</a></h2>
-
+    <h2><a href="part3.php">Back to Part 3 Queries Page</a></h2>
+    <?php
+        if(isset($_POST['button1'])){
+            echo 'button 1 worked!';
+        }
+        if(isset($_POST['button2'])){
+            echo 'button 2 worked!';
+        }
+    ?>
 </body>
 
 </html>
