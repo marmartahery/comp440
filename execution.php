@@ -30,6 +30,27 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
         if(isset($_POST['button2'])){
             echo 'button 2 worked!';
         }
+        if(isset($_POST['button3'])){
+            echo 'button 3 worked!';
+        }
+        if(isset($_POST['button4'])){
+            echo 'button 4 worked!';
+        }
+        if(isset($_POST['button5'])){
+            echo 'button 5 worked!';
+        }
+        if(isset($_POST['button6'])){
+            echo 'button 6 worked!';
+        }
+        if(isset($_POST['button7'])){
+            echo 'button 7 worked!';
+        }
+        if(isset($_POST['button8'])){
+            echo 'button 8 worked!';
+        }
+        if(isset($_POST['button9'])){
+            echo 'button 9 worked!';
+        }
     ?>
 </body>
 
