@@ -125,7 +125,9 @@ textarea{
     margin: 0 auto;
     padding: 1em;
     width: 500px;
+    height: 300px;
     font-family: Arial;
+    resize: none;
 }
 
 i {

@@ -28,7 +28,7 @@
 <label for="uname"></label><br>
 <div class="form-area">
       <input type="text" id="title" name="title" placeholder="Title" required><br>
-      <input type="text" id="blog_content" name="blog_content" maxlength="2500" placeholder="Write your post here!" required><br>
+      <textarea type="text" id="blog_content" name="blog_content" maxlength="2500" placeholder="Write your post here!" required></textarea><br>
       <h2>Add up to 3 tags to help users find your post:</h2>
       <input type="text" id="tag1" name="tag1" pattern="[A-Za-z]+" maxlength="20" placeholder="Tag #1"><br>      
       <input type="text" id="tag2" name="tag2" pattern="[A-Za-z]+" maxlength="20" placeholder="Tag #2"><br>

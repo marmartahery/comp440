@@ -110,9 +110,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                     echo "<br><p class='tags'>Tags:";
                     if ($result_tags->num_rows > 0) {
                         while ($row_tags = $result_tags->fetch_assoc()) {
-                            echo "<h4>";
                             echo " ‘" . $row_tags["tagTitle"] . "’ ";
-                            echo "</h4>";
                         }
                     }
                     echo "</div>";

@@ -75,7 +75,7 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                     }
                 }
                echo "<form action='viewblogs.php' method='POST'>";
-               echo "<input class='comment-area' type='textarea' style='resize: none; height:100px' id='content' name='content' minlength=1 maxlength=250 placeholder='Leave a comment...' required><br>";
+               echo "<textarea style='height:100px' id='content' name='content' minlength=1 maxlength=250 placeholder='Leave a comment...' required></textarea><br>";
                echo "<p class='comment-section-title'>Did you like this post?</p>";
                echo "<input class='radiostyle' type='radio' id='yes' name='sentiment' value=1 checked>";                
                echo "<label class='comment-section-title' for='yes'>&nbsp&nbspYes</label><br>";
