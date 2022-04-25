@@ -234,12 +234,12 @@ echo "<h1><i> Welcome,&nbsp" . $first . ".</i></h1>";
                     echo " '" . $row6["username"] . "' ";
                     echo "</h4>";
                   }
-                } else {
-                    echo "<h4>";
-                    echo ("Returned no results :( ");
-                    echo "</h4>";
-                }
+            } else {
+                echo "<h4>";
+                echo ("Returned no results :( ");
+                echo "</h4>";
             }
+        }
         if(isset($_POST['button7'])){
             echo "<p><h3> Displays all the users who have yet to post a comment. </p><h3>";
             $qry7 = "SELECT username
